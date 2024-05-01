@@ -1,0 +1,12 @@
+grpc:
+  client:
+    com-techprimers-grpc:
+      address: static://localhost:9000
+      negotiationType: plaintext
+    com-member-grpc:
+      address: static://192.168.1.15:55610
+      negotiationType: plaintext
+
+etcd:
+  endpoint: http://localhost:2379
+

@@ -1,0 +1,80 @@
+// ==========================================================================
+// Code generated and maintained by GoFrame CLI tool. DO NOT EDIT.
+// ==========================================================================
+
+syntax = "proto3";
+
+package pbentity;
+
+option java_multiple_files = true;
+
+option go_package = "sports-module/api/pbentity";
+
+import "google/protobuf/timestamp.proto";
+message Member {
+  int64                     Id             = 1;  //
+  int32                     PlatformId     = 2;  // 平台
+  string                    Email          = 3;  // 邮箱
+  int64                     ParentId       = 4;  // 父级用户ID
+  int32                     AreaCode       = 5;  // 区号
+  int64                     Phone          = 6;  //
+  string                    Username       = 7;  // 会员账户
+  string                    Salt           = 8;  //
+  string                    Password       = 9;  // 登录密码
+  double                    Score          = 10; // 总分数
+  int32                     Identity       = 11; // 3user 2agent 1 internal
+  int32                     Game           = 12; //
+  int32                     Kind           = 13; //
+  string                    Currency       = 14; //
+  string                    Realname       = 15; // 真实姓名
+  string                    Nickname       = 16; // 昵称
+  string                    Coins          = 17; // 积分
+  int32                     Exp            = 18; // 经验
+  int32                     Status         = 19; // 状态1启用0冻结
+  string                    Signip         = 20; // 注册IP
+  google.protobuf.Timestamp Signdate       = 21; // 注册时间
+  int32                     Logintimes     = 22; // 登录次数
+  string                    Loginip        = 23; // 登录地址
+  google.protobuf.Timestamp Logintime      = 24; // 登录时间
+  string                    Logintool      = 25; // 来源
+  string                    Gamescore      = 26; // 游戏分
+  string                    Bankscore      = 27; // 银行分
+  string                    Signature      = 28; // 个性签名
+  string                    BankPassword   = 29; // 银行密码
+  string                    Avatar         = 30; // 头像
+  int32                     Level          = 31; //
+  string                    Identification = 32; //
+  string                    Freezingscore  = 33; // 冻结分
+  string                    Freezeremark   = 34; // 冻结备注
+  google.protobuf.Timestamp Freezeaddtime  = 35; // 冻结时间
+  string                    Freezeoperator = 36; // 冻结操作者
+  int32                     Version        = 37; // 用户版本
+  string                    Remark         = 38; // 昵称备注
+}
+service MemberService {
+  // create or update
+  rpc ChangeNickName (MemberSingleRequest) returns (Reply) {}
+  rpc ChangePassword (MemberSingleRequest) returns (Reply) {}
+  rpc AddMoney (MemberMoneyRequest) returns (Reply) {}
+  rpc ReduceMoney (MemberMoneyRequest) returns (Reply) {}
+  rpc GetMember(Member)returns(Member){}
+  rpc IsLogin(TokenRequest)returns(Member){}
+}
+message MemberSingleRequest {
+  uint64  Uid        = 1; //
+  string  Data = 2; //
+}
+message MemberMoneyRequest {
+  uint64  Uid        = 1; //
+  double  Money = 2; //
+  int32 Kind =3;
+  string Remark =4;
+}
+message TokenRequest {
+  string token =1;
+}
+
+message Reply{
+  int32  Code =1;
+  string Message=2;
+}
